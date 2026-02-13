@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FF Cricket League 2026 - Tournament</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0e27;
+            background-image: 
+                radial-gradient(at 20% 30%, rgba(120, 40, 200, 0.2) 0px, transparent 50%),
+                radial-gradient(at 80% 70%, rgba(255, 100, 50, 0.2) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(40, 200, 255, 0.15) 0px, transparent 50%);
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(120, 40, 200, 0.03) 25%, 
+                transparent 50%, 
+                rgba(255, 100, 50, 0.03) 75%, 
+                transparent 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphism header */
+        .header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.03), 
+                transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .emoji-icon {
+            font-size: 4em;
+            display: inline-block;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 100, 50, 0.5));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 4em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00f2ff 0%, #7b2ff7 50%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .tagline {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8em;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 8px;
+            margin-top: 20px;
+            animation: glow 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(72, 219, 251, 0.8)); }
+        }
+
+        /* Neon section headers */
+        .section-header {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #00f2ff, #7b2ff7, #ff6b9d) 1;
+            padding: 25px;
+            margin: 40px 0 30px;
+            text-align: center;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 242, 255, 0.2), 
+                transparent);
+            animation: slide 3s infinite;
+        }
+
+        @keyframes slide {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.2em;
+            color: #fff;
+            text-shadow: 
+                0 0 10px rgba(0, 242, 255, 0.8),
+                0 0 20px rgba(123, 47, 247, 0.5);
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Groups Grid */
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .group-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .group-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00f2ff, #7b2ff7, #ff6b9d, #feca57);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+
+        .group-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 242, 255, 0.3);
+        }
+
+        .group-card:hover::before {
+            opacity: 0.6;
+        }
+
+        .group-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00f2ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            padding: 10px;
+            border-bottom: 2px solid rgba(0, 242, 255, 0.3);
+        }
+
+        .mini-match {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            border-left: 3px solid #00f2ff;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .mini-match:hover {
+            background: rgba(0, 242, 255, 0.1);
+            border-left-color: #7b2ff7;
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 242, 255, 0.2);
+        }
+
+        .match-num {
+            display: inline-block;
+            background: linear-gradient(135deg, #00f2ff, #7b2ff7);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            box-shadow: 0 3px 10px rgba(0, 242, 255, 0.3);
+        }
+
+        .teams-mini {
+            color: #fff;
+            font-size: 0.95em;
+            font-weight: 600;
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .time-mini {
+            color: #feca57;
+            font-size: 0.85em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .time-mini::before {
+            content: '⚡';
+            font-size: 1.2em;
+        }
+
+        /* Tournament Bracket */
+        .bracket-section {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 100, 50, 0.3);
+            border-radius: 30px;
+            padding: 50px 30px;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bracket-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 100, 50, 0.05), 
+                transparent, 
+                rgba(123, 47, 247, 0.05));
+            pointer-events: none;
+        }
+
+        .bracket {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bracket-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .round-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #feca57, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .bracket-match {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 242, 255, 0.4);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bracket-match::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 242, 255, 0.1), 
+                transparent);
+            transition: left 0.6s;
+        }
+
+        .bracket-match:hover::before {
+            left: 100%;
+        }
+
+        .bracket-match:hover {
+            transform: scale(1.05);
+            border-color: #00f2ff;
+            box-shadow: 
+                0 10px 40px rgba(0, 242, 255, 0.4),
+                0 0 60px rgba(123, 47, 247, 0.2);
+        }
+
+        .bracket-match.semi {
+            border-color: rgba(123, 47, 247, 0.4);
+        }
+
+        .bracket-match.semi:hover {
+            border-color: #7b2ff7;
+            box-shadow: 
+                0 10px 40px rgba(123, 47, 247, 0.4),
+                0 0 60px rgba(255, 107, 157, 0.2);
+        }
+
+        .bracket-match.final {
+            border: 3px solid rgba(254, 202, 87, 0.6);
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.1), 
+                rgba(255, 100, 50, 0.1));
+        }
+
+        .bracket-match.final:hover {
+            border-color: #ffd700;
+            box-shadow: 
+                0 15px 60px rgba(255, 215, 0, 0.5),
+                0 0 80px rgba(255, 100, 50, 0.3);
+            transform: scale(1.08);
+        }
+
+        .match-label {
+            font-size: 0.9em;
+            font-weight: 700;
+            color: #00f2ff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-slot {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 14px;
+            margin: 8px 0;
+            border-radius: 12px;
+            font-weight: 700;
+            color: #fff;
+            border-left: 4px solid #00f2ff;
+            transition: all 0.3s;
+            font-size: 1.05em;
+        }
+
+        .team-slot:hover {
+            background: rgba(0, 242, 255, 0.15);
+            transform: translateX(8px);
+            box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
+        }
+
+        .bracket-match.semi .team-slot {
+            border-left-color: #7b2ff7;
+        }
+
+        .bracket-match.final .team-slot {
+            border-left-color: #ffd700;
+            font-size: 1.1em;
+        }
+
+        .match-time {
+            margin-top: 12px;
+            font-size: 0.95em;
+            color: #feca57;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .match-time::before {
+            content: '🕐';
+            font-size: 1.3em;
+        }
+
+        /* Arrows */
+        .arrow-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .arrow {
+            font-size: 4em;
+            background: linear-gradient(90deg, #00f2ff, #7b2ff7, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.6));
+            animation: arrowPulse 2s infinite;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% {
+                transform: translateX(0) scale(1);
+                filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.6));
+            }
+            50% {
+                transform: translateX(10px) scale(1.1);
+                filter: drop-shadow(0 0 30px rgba(123, 47, 247, 0.8));
+            }
+        }
+
+        .trophy-icon {
+            font-size: 4em;
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+            animation: trophyFloat 3s infinite;
+        }
+
+        @keyframes trophyFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .bracket {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+            }
+            
+            .groups-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .groups-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .tagline {
+                font-size: 1.2em;
+                letter-spacing: 4px;
+            }
+
+            .section-header h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Floating particles effect */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-30px) translateX(20px);
+                opacity: 0.6;
+            }
+        }
+
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #00f2ff, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 8s infinite;
+            z-index: 0;
+        }
+
+        /* Filters */
+        .filters-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-group:last-of-type {
+            margin-bottom: 15px;
+        }
+
+        .filter-label {
+            display: block;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #00f2ff;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(0, 242, 255, 0.3);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(0, 242, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .filter-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .filter-btn:hover {
+            border-color: #00f2ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 242, 255, 0.4);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #00f2ff, #7b2ff7);
+            border-color: #00f2ff;
+            box-shadow: 0 5px 20px rgba(0, 242, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .filter-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(0, 242, 255, 0.3);
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 25px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.05em;
+            font-weight: 600;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input:focus {
+            border-color: #00f2ff;
+            background: rgba(0, 242, 255, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 242, 255, 0.3);
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            border: none;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-family: 'Orbitron', monospace;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .reset-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+
+        .reset-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Hidden state for filtered items */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Active match count badge */
+        .match-count {
+            display: inline-block;
+            background: linear-gradient(135deg, #feca57, #ff9ff3);
+            color: #0a0e27;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.95em;
+            font-weight: 700;
+            margin-left: 15px;
+            box-shadow: 0 3px 10px rgba(254, 202, 87, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles -->
+    <div class="particle" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 30%; left: 80%; animation-delay: 2s;"></div>
+    <div class="particle" style="top: 60%; left: 10%; animation-delay: 4s;"></div>
+    <div class="particle" style="top: 80%; left: 70%; animation-delay: 1s;"></div>
+    <div class="particle" style="top: 20%; left: 50%; animation-delay: 3s;"></div>
+    <div class="particle" style="top: 70%; left: 40%; animation-delay: 5s;"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="emoji-icon">🏏</div>
+            <h1>FF Cricket League 2026</h1>
+            <div class="tagline">WHERE LEGENDS COLLIDE!</div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-container">
+            <div class="filter-group">
+                <label class="filter-label">🗓️ Day</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all" data-type="day">All Days</button>
+                    <button class="filter-btn" data-filter="saturday" data-type="day">Saturday</button>
+                    <button class="filter-btn" data-filter="sunday" data-type="day">Sunday</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">🏆 Stage</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all" data-type="stage">All Stages</button>
+                    <button class="filter-btn" data-filter="group" data-type="stage">Group Stage</button>
+                    <button class="filter-btn" data-filter="knockout" data-type="stage">Knockouts</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">📋 Group</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all" data-type="group">All Groups</button>
+                    <button class="filter-btn" data-filter="a" data-type="group">Group A</button>
+                    <button class="filter-btn" data-filter="b" data-type="group">Group B</button>
+                    <button class="filter-btn" data-filter="c" data-type="group">Group C</button>
+                    <button class="filter-btn" data-filter="d" data-type="group">Group D</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">🔍 Search Team</label>
+                <input type="text" id="teamSearch" class="search-input" placeholder="Search team name...">
+            </div>
+
+            <button class="reset-btn" id="resetFilters">🔄 Reset All</button>
+        </div>
+
+        <!-- Group Stage -->
+        <div class="section-header">
+            <h2>📅 GROUP STAGE</h2>
+        </div>
+
+        <div class="groups-grid">
+            <!-- GROUP A -->
+            <div class="group-card" data-group="a" data-day="saturday" data-stage="group">
+                <div class="group-title">GROUP A</div>
+                <div class="mini-match" data-teams="warriors ennadhu nagarjunava">
+                    <span class="match-num">M1</span>
+                    <div class="teams-mini">Warriors vs Ennadhu Nagarjunava</div>
+                    <div class="time-mini">Sat 5:00 PM</div>
+                </div>
+                <div class="mini-match" data-teams="windsor warriors survivors">
+                    <span class="match-num">M2</span>
+                    <div class="teams-mini">Windsor Warriors vs Survivors</div>
+                    <div class="time-mini">Sat 6:00 PM</div>
+                </div>
+                <div class="mini-match" data-teams="warriors windsor warriors">
+                    <span class="match-num">M3</span>
+                    <div class="teams-mini">Warriors vs Windsor Warriors</div>
+                    <div class="time-mini">Sat 7:00 PM</div>
+                </div>
+                <div class="mini-match" data-teams="ennadhu nagarjunava survivors">
+                    <span class="match-num">M4</span>
+                    <div class="teams-mini">Ennadhu Nagarjunava vs Survivors</div>
+                    <div class="time-mini">Sat 8:00 PM</div>
+                </div>
+            </div>
+
+            <!-- GROUP B -->
+            <div class="group-card" data-group="b" data-day="saturday" data-stage="group">
+                <div class="group-title">GROUP B</div>
+                <div class="mini-match" data-teams="ad select elv solar">
+                    <span class="match-num">M5</span>
+                    <div class="teams-mini">AD Select vs ELV Solar</div>
+                    <div class="time-mini">Sat 9:00 PM</div>
+                </div>
+                <div class="mini-match" data-teams="city king star tvs champz">
+                    <span class="match-num">M6</span>
+                    <div class="teams-mini">City King Star vs TVS Champz</div>
+                    <div class="time-mini">Sat 10:00 PM</div>
+                </div>
+                <div class="mini-match" data-teams="ad select city king star">
+                    <span class="match-num">M7</span>
+                    <div class="teams-mini">AD Select vs City King Star</div>
+                    <div class="time-mini">Sat 11:00 PM</div>
+                </div>
+                <div class="mini-match" data-teams="elv solar tvs champz">
+                    <span class="match-num">M8</span>
+                    <div class="teams-mini">ELV Solar vs TVS Champz</div>
+                    <div class="time-mini">Sat 11:55 PM</div>
+                </div>
+            </div>
+
+            <!-- GROUP C -->
+            <div class="group-card" data-group="c" data-day="sunday" data-stage="group">
+                <div class="group-title">GROUP C</div>
+                <div class="mini-match" data-teams="fcc black panthers">
+                    <span class="match-num">M9</span>
+                    <div class="teams-mini">FCC vs Black Panthers</div>
+                    <div class="time-mini">Sun 7:00 AM</div>
+                </div>
+                <div class="mini-match" data-teams="pbv kings falcon">
+                    <span class="match-num">M10</span>
+                    <div class="teams-mini">PBV Kings vs Falcon</div>
+                    <div class="time-mini">Sun 8:00 AM</div>
+                </div>
+                <div class="mini-match" data-teams="black panthers falcon">
+                    <span class="match-num">M11</span>
+                    <div class="teams-mini">Black Panthers vs Falcon</div>
+                    <div class="time-mini">Sun 9:00 AM</div>
+                </div>
+                <div class="mini-match" data-teams="pbv kings fcc">
+                    <span class="match-num">M12</span>
+                    <div class="teams-mini">PBV Kings vs FCC</div>
+                    <div class="time-mini">Sun 10:00 AM</div>
+                </div>
+            </div>
+
+            <!-- GROUP D -->
+            <div class="group-card" data-group="d" data-day="sunday" data-stage="group">
+                <div class="group-title">GROUP D</div>
+                <div class="mini-match" data-teams="ftw vintage kings">
+                    <span class="match-num">M13</span>
+                    <div class="teams-mini">FTW vs Vintage Kings</div>
+                    <div class="time-mini">Sun 11:00 AM</div>
+                </div>
+                <div class="mini-match" data-teams="rage royals master blaster">
+                    <span class="match-num">M14</span>
+                    <div class="teams-mini">Rage Royals vs Master Blaster</div>
+                    <div class="time-mini">Sun 12:00 PM</div>
+                </div>
+                <div class="mini-match" data-teams="ftw rage royals">
+                    <span class="match-num">M15</span>
+                    <div class="teams-mini">FTW vs Rage Royals</div>
+                    <div class="time-mini">Sun 1:00 PM</div>
+                </div>
+                <div class="mini-match" data-teams="vintage kings master blaster">
+                    <span class="match-num">M16</span>
+                    <div class="teams-mini">Vintage Kings vs Master Blaster</div>
+                    <div class="time-mini">Sun 2:00 PM</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tournament Bracket -->
+        <div class="bracket-section" data-day="sunday" data-stage="knockout">
+            <div class="section-header">
+                <h2>🔥 KNOCKOUT STAGE</h2>
+            </div>
+
+            <div class="bracket">
+                <!-- Quarter Finals -->
+                <div class="bracket-column">
+                    <div class="round-label">⚡ Quarter Finals</div>
+                    
+                    <div class="bracket-match">
+                        <div class="match-label">QF1</div>
+                        <div class="team-slot">1st Group A</div>
+                        <div class="team-slot">2nd Group B</div>
+                        <div class="match-time">3:00 PM</div>
+                    </div>
+
+                    <div class="bracket-match">
+                        <div class="match-label">QF2</div>
+                        <div class="team-slot">1st Group B</div>
+                        <div class="team-slot">2nd Group A</div>
+                        <div class="match-time">4:00 PM</div>
+                    </div>
+
+                    <div class="bracket-match">
+                        <div class="match-label">QF3</div>
+                        <div class="team-slot">1st Group C</div>
+                        <div class="team-slot">2nd Group D</div>
+                        <div class="match-time">5:00 PM</div>
+                    </div>
+
+                    <div class="bracket-match">
+                        <div class="match-label">QF4</div>
+                        <div class="team-slot">1st Group D</div>
+                        <div class="team-slot">2nd Group C</div>
+                        <div class="match-time">6:00 PM</div>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow-container">
+                    <div class="arrow">→</div>
+                    <div class="arrow">→</div>
+                </div>
+
+                <!-- Semi Finals -->
+                <div class="bracket-column">
+                    <div class="round-label">🌟 Semi Finals</div>
+                    
+                    <div class="bracket-match semi">
+                        <div class="match-label">SEMI 1</div>
+                        <div class="team-slot">Winner QF1</div>
+                        <div class="team-slot">Winner QF2</div>
+                        <div class="match-time">7:00 PM</div>
+                    </div>
+
+                    <div class="bracket-match semi">
+                        <div class="match-label">SEMI 2</div>
+                        <div class="team-slot">Winner QF3</div>
+                        <div class="team-slot">Winner QF4</div>
+                        <div class="match-time">8:00 PM</div>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow-container">
+                    <div class="arrow">→</div>
+                </div>
+
+                <!-- Final -->
+                <div class="bracket-column">
+                    <div class="round-label">🏆 Championship</div>
+                    
+                    <div class="bracket-match final">
+                        <div class="trophy-icon">🏆</div>
+                        <div class="match-label">GRAND FINAL</div>
+                        <div class="team-slot">Winner Semi 1</div>
+                        <div class="team-slot">Winner Semi 2</div>
+                        <div class="match-time">9:00 PM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Filter state
+        const filterState = {
+            day: 'all',
+            stage: 'all',
+            group: 'all',
+            search: ''
+        };
+
+        // Get all filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const searchInput = document.getElementById('teamSearch');
+        const resetBtn = document.getElementById('resetFilters');
+
+        // Filter function
+        function applyFilters() {
+            const groupCards = document.querySelectorAll('.group-card');
+            const bracketSection = document.querySelector('.bracket-section');
+            const groupStageSection = document.querySelector('.section-header');
+            
+            let visibleCount = 0;
+
+            // Filter group cards
+            groupCards.forEach(card => {
+                const cardDay = card.dataset.day;
+                const cardStage = card.dataset.stage;
+                const cardGroup = card.dataset.group;
+                
+                let showCard = true;
+
+                // Check day filter
+                if (filterState.day !== 'all' && cardDay !== filterState.day) {
+                    showCard = false;
+                }
+
+                // Check stage filter
+                if (filterState.stage !== 'all' && cardStage !== filterState.stage) {
+                    showCard = false;
+                }
+
+                // Check group filter
+                if (filterState.group !== 'all' && cardGroup !== filterState.group) {
+                    showCard = false;
+                }
+
+                // Check search filter
+                if (filterState.search) {
+                    const matches = card.querySelectorAll('.mini-match');
+                    let hasMatch = false;
+                    
+                    matches.forEach(match => {
+                        const teams = match.dataset.teams;
+                        if (teams && teams.includes(filterState.search.toLowerCase())) {
+                            hasMatch = true;
+                            match.style.display = '';
+                        } else {
+                            match.style.display = 'none';
+                        }
+                    });
+
+                    if (!hasMatch) {
+                        showCard = false;
+                    }
+                } else {
+                    // Show all matches if no search
+                    const matches = card.querySelectorAll('.mini-match');
+                    matches.forEach(match => match.style.display = '');
+                }
+
+                if (showCard) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Filter bracket section
+            const bracketDay = bracketSection.dataset.day;
+            const bracketStage = bracketSection.dataset.stage;
+            
+            let showBracket = true;
+
+            if (filterState.day !== 'all' && bracketDay !== filterState.day) {
+                showBracket = false;
+            }
+
+            if (filterState.stage !== 'all' && bracketStage !== filterState.stage) {
+                showBracket = false;
+            }
+
+            if (showBracket) {
+                bracketSection.classList.remove('hidden');
+            } else {
+                bracketSection.classList.add('hidden');
+            }
+
+            // Update section headers visibility
+            const groupsGrid = document.querySelector('.groups-grid');
+            const groupSectionHeader = groupsGrid.previousElementSibling;
+            
+            if (visibleCount === 0) {
+                groupSectionHeader.classList.add('hidden');
+            } else {
+                groupSectionHeader.classList.remove('hidden');
+            }
+        }
+
+        // Handle filter button clicks
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filterType = this.dataset.type;
+                const filterValue = this.dataset.filter;
+
+                // Remove active class from siblings
+                const siblings = this.parentElement.querySelectorAll('.filter-btn');
+                siblings.forEach(sibling => sibling.classList.remove('active'));
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Update filter state
+                filterState[filterType] = filterValue;
+
+                // Apply filters
+                applyFilters();
+            });
+        });
+
+        // Handle search input
+        searchInput.addEventListener('input', function(e) {
+            filterState.search = e.target.value.trim();
+            applyFilters();
+        });
+
+        // Handle reset button
+        resetBtn.addEventListener('click', function() {
+            // Reset filter state
+            filterState.day = 'all';
+            filterState.stage = 'all';
+            filterState.group = 'all';
+            filterState.search = '';
+
+            // Reset all buttons
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Reset search input
+            searchInput.value = '';
+
+            // Apply filters
+            applyFilters();
+        });
+
+        // Add smooth scroll animation on filter change
+        function smoothScrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add entrance animations
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.group-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
